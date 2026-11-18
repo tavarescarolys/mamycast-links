@@ -1,0 +1,63 @@
+{
+  "perfil": {
+    "eyebrow": "Videocast de parentalidade e infância do Nordeste",
+    "titulo": "Conversa de verdade sobre maternidade e infância.",
+    "texto": "Há 7 anos o MamyCast leva para a mesa especialistas e famílias nordestinas para falar do que a rotina de quem cria filhos realmente pede: **autocuidado, saúde emocional, educação e o dia a dia da casa**. Direto de Fortaleza, sem fórmula pronta.",
+    "instagram": "https://www.instagram.com/mamycastbr/",
+    "youtube": "https://www.youtube.com/@mamycast"
+  },
+  "itens": [
+    {
+      "tipo": "secao",
+      "titulo": "Últimos episódios",
+      "link": { "texto": "Ver todos", "url": "https://www.youtube.com/@mamycast" }
+    },
+    {
+      "tipo": "video",
+      "youtube": "vWf3aNgHjr4",
+      "titulo": "Autocuidado sem culpa: como recuperar a autoestima no pós-parto",
+      "novo": true
+    },
+    {
+      "tipo": "video",
+      "youtube": "DlpSjtDcY4o",
+      "titulo": "O segredo para ensinar seu filho a se cuidar sozinho",
+      "novo": true
+    },
+    {
+      "tipo": "secao",
+      "titulo": "Fale com a gente"
+    },
+    {
+      "tipo": "whatsapp",
+      "titulo": "Quero levar minha marca",
+      "descricao": "Patrocínio e parcerias",
+      "numero": "5585997576456",
+      "mensagem": "Oi! Vim pela página de links do MamyCast e quero saber como levar minha marca. Minha marca é: ",
+      "destaque": true
+    },
+    {
+      "tipo": "whatsapp",
+      "titulo": "Falar com a equipe",
+      "descricao": "Imprensa e outros assuntos",
+      "numero": "5585997576456",
+      "mensagem": "Oi! Vim pela página de links do MamyCast e queria falar sobre: "
+    },
+    {
+      "tipo": "link",
+      "titulo": "MamyCast Experience",
+      "descricao": "O encontro de 7 anos no RioMar Fortaleza",
+      "url": ""
+    },
+    {
+      "tipo": "secao",
+      "titulo": "Na mídia"
+    },
+    {
+      "tipo": "link",
+      "titulo": "Espalhe Boas Notícias",
+      "descricao": "MamyCast celebra 7 anos com encontro especial para famílias em Fortaleza",
+      "url": "https://espalheboasnoticias.com.br/mamycast-celebra-7-anos-com-encontro-especial-para-familias-em-fortaleza/"
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MamyCast · Links</title>
+<meta name="description" content="Videocast de parentalidade e infância do Nordeste. Assista aos últimos episódios e fale com a equipe.">
+<meta name="theme-color" content="#4A005E">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --roxo:#4A005E; --roxo-escuro:#2f003c; --roxo-medio:#74209D;
+    --magenta:#9E005E; --rosa:#E9639D; --branco:#FFFFFF; --muted:#DFC8E2;
+    --display:'DM Sans','Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --corpo:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --ease:cubic-bezier(.2,.8,.2,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ background:var(--roxo); }
+  body{
+    font-family:var(--corpo); color:var(--branco);
+    min-height:100vh; min-height:100dvh;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+    background:transparent;
+  }
+  /* textura fixa (pseudo-elemento: fixed em iOS é instável no body) */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2;
+    background:var(--roxo) url("bg-roxo.jpg") center/cover;
+  }
+
+
+  .page{ position:relative; max-width:520px; margin:0 auto; padding:calc(26px + env(safe-area-inset-top)) 20px calc(34px + env(safe-area-inset-bottom)); }
+
+  /* ---------- topo ---------- */
+  .hero{ text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .selo{
+    position:relative; width:min(46vw,176px); aspect-ratio:1;
+    animation:sobe .8s var(--ease) both;
+  }
+  .selo img{ position:absolute; display:block; user-select:none; -webkit-user-drag:none; }
+  .selo .anel{ inset:0; width:100%; height:100%; }
+  .selo .mc{ left:50%; top:50%; width:68.5%; height:68.5%; transform:translate(-50%,-50%); }
+
+  .apresentacao{ margin-top:22px; max-width:30em; }
+  .apresentacao .eyebrow{
+    font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--rosa);
+    animation:sobe .7s var(--ease) .35s both;
+  }
+  .apresentacao h1{
+    margin-top:10px; font-family:var(--display); font-weight:700; font-size:30px; line-height:1.1; letter-spacing:-.01em;
+    animation:sobe .7s var(--ease) .45s both;
+  }
+  .apresentacao p.texto{
+    margin-top:14px; font-size:15.5px; line-height:1.6; font-weight:500; color:var(--muted);
+    animation:sobe .7s var(--ease) .55s both;
+  }
+  .apresentacao p.texto strong{ color:var(--branco); font-weight:700; }
+  .redes{ margin-top:20px; display:flex; gap:12px; justify-content:center; animation:sobe .7s var(--ease) .7s both; }
+  .ig{
+    width:46px; height:46px; border-radius:50%;
+    display:grid; place-items:center; color:var(--branco);
+    border:2px solid rgba(255,255,255,.35); background:rgba(255,255,255,.06);
+    transition:background .2s, border-color .2s, color .2s;
+  }
+  .ig svg{ width:22px; height:22px; }
+  .ig:hover{ background:var(--branco); color:var(--magenta); border-color:var(--branco); }
+  @keyframes sobe{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+
+  /* ---------- lista ---------- */
+  #lista{ margin-top:34px; display:flex; flex-direction:column; gap:16px; }
+
+  .rv{ opacity:0; transform:translateY(20px); transition:opacity .7s var(--ease), transform .8s var(--ease); }
+  .rv.in{ opacity:1; transform:none; }
+
+  .secao{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-top:14px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.22); }
+  .secao:first-child{ margin-top:0; }
+  .secao h2{ font-family:var(--display); font-weight:700; font-size:27px; line-height:1; letter-spacing:-.02em; white-space:nowrap; }
+  .secao.leve h2{ font-size:20px; color:var(--muted); }
+  .secao a{
+    flex:none; font-size:13px; font-weight:700; color:var(--rosa); text-decoration:none;
+    display:inline-flex; align-items:center; gap:4px; padding:6px 2px;
+  }
+  .secao a svg{ width:14px; height:14px; transition:transform .2s ease; }
+  .secao a:hover svg{ transform:translate(2px,-2px); }
+
+  /* ---------- vídeos ---------- */
+  .video{
+    position:relative; background:var(--branco); color:var(--roxo);
+    border-radius:14px; padding:8px 8px 16px;
+    box-shadow:0 26px 40px -22px rgba(15,0,22,.75), 0 0 0 1px rgba(255,255,255,.4);
+    transition:opacity .7s var(--ease), transform .35s ease, box-shadow .3s;
+  }
+  .video.in:hover{ transform:translateY(-3px); box-shadow:0 34px 46px -22px rgba(15,0,22,.85), 0 0 0 1px rgba(255,255,255,.4); }
+  .video .tela{ position:relative; aspect-ratio:16/9; border-radius:8px; overflow:hidden; background:var(--roxo-escuro); }
+  .video .play{ all:unset; cursor:pointer; position:absolute; inset:0; display:block; -webkit-tap-highlight-color:transparent; }
+  .video .play img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .8s var(--ease), filter .4s; }
+  .video .play:hover img{ transform:scale(1.06); }
+  .video .play::before{ /* véu para dar contraste ao botão */
+    content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg,rgba(47,0,60,0) 45%,rgba(47,0,60,.55) 100%);
+  }
+  .video .botao{
+    position:absolute; z-index:2; left:50%; top:50%; width:64px; height:64px; margin:-32px 0 0 -32px;
+    border-radius:50%; background:var(--magenta); display:grid; place-items:center;
+    box-shadow:0 10px 26px rgba(0,0,0,.45);
+    transition:transform .25s ease, background .2s;
+  }
+  .video .botao svg{ width:28px; height:28px; margin-left:4px; fill:var(--branco); }
+  .video .play:hover .botao{ transform:scale(1.06); background:var(--rosa); }
+  .video .play:active .botao{ transform:scale(.94); }
+  .video .assistir{
+    position:absolute; z-index:2; left:12px; bottom:10px; color:var(--branco);
+    font-size:12px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  }
+  .video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; animation:abre .4s var(--ease); }
+  @keyframes abre{ from{ opacity:0; transform:scale(.97); } to{ opacity:1; transform:none; } }
+  .video h3{ margin:14px 8px 0; font-family:var(--display); font-weight:700; font-size:20px; line-height:1.18; letter-spacing:-.005em; }
+  .video .novo{
+    position:absolute; z-index:3; top:16px; left:16px;
+    background:var(--magenta); color:var(--branco); font-family:var(--display); font-weight:700; font-size:13px; line-height:1; letter-spacing:.04em; text-transform:uppercase;
+    padding:7px 10px 6px; border-radius:6px;
+  }
+
+  /* ---------- cartões de link / whatsapp ---------- */
+  .item{
+    position:relative; overflow:hidden; display:flex; align-items:center; gap:14px;
+    padding:17px 18px; border-radius:12px; text-decoration:none;
+    background:rgba(255,255,255,.1); color:var(--branco);
+    border:1.5px solid rgba(255,255,255,.22);
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+    transition:opacity .7s var(--ease), transform .25s ease, background .2s, border-color .2s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .item.in:hover{ transform:translateY(-2px); background:rgba(255,255,255,.17); border-color:rgba(255,255,255,.4); }
+  .item.in:active{ transform:scale(.99); }
+  .item .txt{ flex:1; min-width:0; }
+  .item .t{ display:block; font-family:var(--display); font-weight:700; font-size:19px; line-height:1.1; }
+  .item .d{ display:block; margin-top:4px; font-size:13px; font-weight:600; color:var(--muted); line-height:1.35; }
+  .item .ic{ flex:none; width:28px; height:28px; }
+  .item .go{ flex:none; width:20px; height:20px; transition:transform .2s ease; }
+  .item:hover .go{ transform:translate(2px,-2px); }
+  .item.destaque{ background:var(--magenta); border-color:transparent; box-shadow:0 14px 26px -14px rgba(158,0,94,.8); }
+  .item.destaque .d{ color:rgba(255,255,255,.88); }
+
+  .video .play:focus-visible, .item:focus-visible, .ig:focus-visible, .secao a:focus-visible{ outline:3px solid var(--rosa); outline-offset:3px; border-radius:12px; }
+  .video .play:focus-visible{ outline-offset:-3px; }
+
+  /* ---------- rodapé ---------- */
+  footer{ margin-top:52px; text-align:center; animation:sobe .8s var(--ease) both; }
+  footer img{ width:min(64vw,250px); height:auto; display:block; margin:0 auto; }
+  footer p{ margin-top:14px; font-size:12.5px; font-weight:600; color:var(--muted); }
+
+  noscript .item{ background:var(--magenta); border-color:transparent; }
+
+  @media (min-width:700px){
+    .page{ padding-top:44px; }
+    .selo{ width:196px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation:none !important; transition:none !important; }
+    .rv{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <div class="selo">
+      <img class="anel" src="selo-anel.png" alt="" width="720" height="720">
+      <img class="mc" src="selo-mc.png" alt="MamyCast" width="493" height="493">
+    </div>
+    <div class="apresentacao">
+      <p class="eyebrow" id="eyebrow">Videocast de parentalidade e infância do Nordeste</p>
+      <h1 id="titulo">Conversa de verdade sobre maternidade e infância.</h1>
+      <p class="texto" id="texto">Há 7 anos o MamyCast leva para a mesa especialistas e famílias nordestinas para falar do que a rotina de quem cria filhos realmente pede: <strong>autocuidado, saúde emocional, educação e o dia a dia da casa</strong>. Direto de Fortaleza, sem fórmula pronta.</p>
+    </div>
+    <nav class="redes" aria-label="Redes do MamyCast">
+      <a class="ig" id="ig" href="https://www.instagram.com/mamycastbr/" target="_blank" rel="noopener" aria-label="Instagram do MamyCast" data-cta="instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="ig" id="yt" href="https://www.youtube.com/@mamycast" target="_blank" rel="noopener" aria-label="Canal do MamyCast no YouTube" data-cta="youtube">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <section id="lista" aria-label="Links"></section>
+
+  <noscript>
+    <a class="item destaque" href="https://wa.me/5585997576456" style="margin-top:28px"><span class="txt"><span class="t">Falar no WhatsApp</span></span></a>
+  </noscript>
+
+  <footer>
+    <img src="mamycast-branco.png" alt="MamyCast" width="640" height="76">
+    <p>© 2026 MamyCast · Fortaleza, CE</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var ICON_WA = '<svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.3l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.2-.3.2-.5.1-1.4-.7-2.3-1.2-3.2-2.8-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3z"/></svg>';
+  var ICON_GO = '<svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+  var ICON_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
+
+  function el(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function ytId(v){ var m=String(v).match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/); return m?m[1]:String(v); }
+  function txt(i){ return '<span class="txt"><span class="t">'+esc(i.titulo)+'</span>'+(i.descricao?'<span class="d">'+esc(i.descricao)+'</span>':'')+'</span>'; }
+
+  function render(item, ordem){
+    if(item.tipo==='secao'){
+      var s = el('div','secao rv'+(ordem>0?' leve':''), '<h2>'+esc(item.titulo)+'</h2>');
+      if(item.link && item.link.url){
+        s.insertAdjacentHTML('beforeend','<a href="'+esc(item.link.url)+'" target="_blank" rel="noopener" data-cta="secao:'+esc(item.titulo)+'">'+esc(item.link.texto||'Ver mais')+ICON_GO.replace('class="go"','')+'</a>');
+      }
+      return s;
+    }
+
+    if(item.tipo==='whatsapp'){
+      var a = el('a','item rv'+(item.destaque?' destaque':''), ICON_WA+txt(item)+ICON_GO);
+      a.href='https://wa.me/'+item.numero+(item.mensagem?'?text='+encodeURIComponent(item.mensagem):'');
+      a.target='_blank'; a.rel='noopener'; a.setAttribute('data-cta','whatsapp:'+item.titulo);
+      return a;
+    }
+
+    if(item.tipo==='video'){
+      var id = ytId(item.youtube);
+      var box = el('article','video rv');
+      if(item.novo) box.appendChild(el('span','novo','Novo'));
+      var tela = el('div','tela');
+      var btn = el('button','play','<img alt="" src="https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg"><span class="botao">'+ICON_PLAY+'</span>');
+      btn.type='button'; btn.setAttribute('aria-label','Assistir: '+item.titulo);
+      var img = btn.querySelector('img');
+      img.addEventListener('error', function(){ if(img.src.indexOf('hqdefault')<0) img.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg'; });
+      img.addEventListener('load', function(){ if(img.naturalWidth && img.naturalWidth<200) img.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg'; }); /* maxres ausente devolve 120px */
+      btn.addEventListener('click', function(){
+        var f = document.createElement('iframe');
+        f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';
+        f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true;
+        f.title=item.titulo; tela.innerHTML=''; tela.appendChild(f);
+      });
+      tela.appendChild(btn); box.appendChild(tela);
+      box.appendChild(el('h3',null,esc(item.titulo)));
+      return box;
+    }
+
+    if(!item.url) return null; /* sem link ainda: não mostra card quebrado */
+    var l = el('a','item rv', txt(item)+ICON_GO);
+    l.href=item.url; l.target='_blank'; l.rel='noopener'; l.setAttribute('data-cta','link:'+item.titulo);
+    return l;
+  }
+
+  function revelar(nodes){
+    if(!('IntersectionObserver' in window)){ nodes.forEach(function(n){ n.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+    nodes.forEach(function(n,i){ n.style.transitionDelay=(Math.min(i,3)*70)+'ms'; io.observe(n); });
+  }
+
+  function montar(d){
+    if(d.perfil){
+      if(d.perfil.eyebrow) document.getElementById('eyebrow').textContent=d.perfil.eyebrow;
+      if(d.perfil.titulo) document.getElementById('titulo').textContent=d.perfil.titulo;
+      if(d.perfil.texto) document.getElementById('texto').innerHTML=esc(d.perfil.texto).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+      if(d.perfil.instagram) document.getElementById('ig').href=d.perfil.instagram;
+      if(d.perfil.youtube) document.getElementById('yt').href=d.perfil.youtube;
+    }
+    var lista=document.getElementById('lista'), nodes=[], secoes=0;
+    (d.itens||[]).forEach(function(i){
+      var n=render(i, i.tipo==='secao' ? secoes++ : 0); if(n){ lista.appendChild(n); nodes.push(n); }
+    });
+    revelar(nodes);
+  }
+
+  fetch('links.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(montar).catch(function(){
+    document.getElementById('lista').innerHTML='<a class="item destaque" href="https://wa.me/5585997576456"><span class="txt"><span class="t">Falar no WhatsApp</span></span></a>';
+  });
+})();
+</script>
+</body>
+</html>
