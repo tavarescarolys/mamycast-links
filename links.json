@@ -10,7 +10,16 @@
     {
       "tipo": "secao",
       "titulo": "Últimos episódios",
-      "link": { "texto": "Ver todos", "url": "https://www.youtube.com/@mamycast" }
+      "link": {
+        "texto": "Ver todos",
+        "url": "https://www.youtube.com/@mamycast"
+      }
+    },
+    {
+      "tipo": "video",
+      "youtube": "6qpYBIIpgfU",
+      "titulo": "Evaniele Fonteles: o diagnóstico que mudou minha vida",
+      "novo": true
     },
     {
       "tipo": "video",
