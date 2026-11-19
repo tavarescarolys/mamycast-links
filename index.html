@@ -262,7 +262,21 @@
     nodes.forEach(function(n,i){ n.style.transitionDelay=(Math.min(i,3)*70)+'ms'; io.observe(n); });
   }
 
-  function montar(d){
+  /* "episodios": troca o item pelos vídeos mais recentes de episodios.json (atualizado sozinho pelo GitHub Actions) */
+  function expandir(itens, eps){
+    var out=[];
+    itens.forEach(function(i){
+      if(i.tipo!=='episodios'){ out.push(i); return; }
+      (eps||[]).slice(0,i.quantidade||3).forEach(function(e){
+        var dias=(Date.now()-Date.parse(e.publicado))/864e5;
+        out.push({tipo:'video', youtube:e.id, titulo:e.titulo, novo: dias<=(i.novo_dias||14)});
+      });
+    });
+    return out;
+  }
+
+  function montar(d, eps){
+    d.itens=expandir(d.itens||[], eps);
     if(d.perfil){
       if(d.perfil.eyebrow) document.getElementById('eyebrow').textContent=d.perfil.eyebrow;
       if(d.perfil.titulo) document.getElementById('titulo').textContent=d.perfil.titulo;
@@ -277,7 +291,8 @@
     revelar(nodes);
   }
 
-  fetch('links.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(montar).catch(function(){
+  var pEps=fetch('episodios.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(x){return x.episodios;}).catch(function(){return [];});
+  fetch('links.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){ return pEps.then(function(eps){ montar(d,eps); }); }).catch(function(){
     document.getElementById('lista').innerHTML='<a class="item destaque" href="https://wa.me/5585997576456"><span class="txt"><span class="t">Falar no WhatsApp</span></span></a>';
   });
 })();

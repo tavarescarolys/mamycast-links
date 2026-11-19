@@ -16,22 +16,9 @@
       }
     },
     {
-      "tipo": "video",
-      "youtube": "6qpYBIIpgfU",
-      "titulo": "Evaniele Fonteles: o diagnóstico que mudou minha vida",
-      "novo": true
-    },
-    {
-      "tipo": "video",
-      "youtube": "vWf3aNgHjr4",
-      "titulo": "Autocuidado sem culpa: como recuperar a autoestima no pós-parto",
-      "novo": true
-    },
-    {
-      "tipo": "video",
-      "youtube": "DlpSjtDcY4o",
-      "titulo": "O segredo para ensinar seu filho a se cuidar sozinho",
-      "novo": true
+      "tipo": "episodios",
+      "quantidade": 3,
+      "novo_dias": 14
     },
     {
       "tipo": "secao",
