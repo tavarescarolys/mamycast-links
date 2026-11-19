@@ -1,0 +1,26 @@
+name: Atualizar episódios
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"   # a cada 3 horas
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Buscar episódios no YouTube
+        run: python3 scripts/atualizar_episodios.py
+      - name: Publicar se mudou
+        run: |
+          if [ -n "$(git status --porcelain episodios.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add episodios.json
+            git commit -m "Atualiza episódios do canal"
+            git push
+          fi
